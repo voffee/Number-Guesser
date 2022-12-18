@@ -28,4 +28,15 @@ UI_maxNum.textContent = max;
 // Listen for guess
 UI_guessBtn.addEventListener('click', function(){
     let guess = parseInt(console.log(UI_guessInput.value));
-})
+
+    // Validate
+    if (isNaN(guess) || guess < min || guess > max){
+        setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+    }
+});
+
+// Set message
+function setMessage(msg, color){
+    UI_message.style.color = color;
+    UI_message.textContent = msg;
+}
