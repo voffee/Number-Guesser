@@ -27,11 +27,23 @@ UI_maxNum.textContent = max;
 
 // Listen for guess
 UI_guessBtn.addEventListener('click', function(){
-    let guess = parseInt(console.log(UI_guessInput.value));
+    let guess = parseInt(UI_guessInput.value);
 
     // Validate
     if (isNaN(guess) || guess < min || guess > max){
         setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+    }
+
+    // Check if won
+    if(guess === winningNum){
+        // Disable input
+        UI_guessInput.disabled = true;
+        // Change border color
+        UI_guessInput.style.borderColor = 'green';
+        // Set message
+        setMessage(`${winningNum} is correct, YOU WIN!`, 'green');
+    } else {
+        
     }
 });
 
